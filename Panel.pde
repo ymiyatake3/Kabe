@@ -56,14 +56,16 @@ class Panel {
     text(player.score, sx+w/2, h/2);
   }
   
-  void finish(boolean winner) {
+  void finish(String result) {
     textSize(80);
     textAlign(CENTER);
     fill(255);
-    if(winner) {
+    if(result == "win") {
       text("WIN!", sx+w/2, 100);
-    } else {
+    } else if (result == "lose"){
       text("LOSE!", sx+w/2, 100);
+    } else {
+      text("DRAW!", sx+w/2, 100);
     }
   }
 }
