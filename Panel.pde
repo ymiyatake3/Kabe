@@ -60,12 +60,6 @@ class Panel {
     textSize(80);
     textAlign(CENTER);
     fill(255);
-    if(result == "win") {
-      text("WIN!", sx+w/2, 100);
-    } else if (result == "lose"){
-      text("LOSE!", sx+w/2, 100);
-    } else {
-      text("DRAW!", sx+w/2, 100);
-    }
+    text(result, sx+w/2, 100);
   }
 }
