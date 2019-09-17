@@ -55,4 +55,15 @@ class Panel {
     fill(20);
     text(player.score, sx+w/2, h/2);
   }
+  
+  void finish(boolean winner) {
+    textSize(80);
+    textAlign(CENTER);
+    fill(255);
+    if(winner) {
+      text("WIN!", sx+w/2, 100);
+    } else {
+      text("LOSE!", sx+w/2, 100);
+    }
+  }
 }
