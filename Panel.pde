@@ -51,8 +51,8 @@ class Panel {
     
     // Draw score
     textSize(70);
-    textAlign(CENTER);
+    textAlign(CENTER, CENTER);
     fill(20);
-    text(player.score, sx+w/2, 100);
+    text(player.score, sx+w/2, h/2);
   }
 }
