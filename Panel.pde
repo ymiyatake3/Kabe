@@ -41,6 +41,14 @@ class Panel {
     // Draw panel
     fill(backcolor);
     rect(sx, sy, w, h);
+    textSize(30);
+    textAlign(LEFT);
+    fill(20);
+    if (position == "left") {
+      text("Player 1", sx + 50, h - 50);
+    } else {
+      text("Player 2", sx + 50, h - 50);
+    }
     
     // Draw circles
     for (int i = 0; i < cnum; i++) {
