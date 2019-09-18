@@ -1,15 +1,18 @@
 Panel left, right; 
-int timelimit = 600;  // 10sec
+int startTime = 0;
+int playtime = 600;  // 10sec
+boolean onGame;
 
 void setup() {
   size(800, 600);
   noStroke();
   left = new Panel("left");
   right = new Panel("right");
+  onGame = false;
 }
 
 void draw() {
-  if (frameCount < timelimit) {
+  if (onGame) {
     if (frameCount % 30 == 0) {
       int left_pushed = left.player.push();
       if (left_pushed >= 0) {
@@ -20,9 +23,35 @@ void draw() {
         left.player.pushed(right_pushed);
       }
     }
+    
+    if (frameCount == startTime + playtime) {
+      onGame = false;
+    }
+    
     left.display();
     right.display();
-  } else if (frameCount == timelimit){
+    
+  } else if (frameCount <= 100){
+    left.display();
+    right.display();
+    textSize(120);
+    textAlign(CENTER, CENTER);
+    fill(0, 128, 128);
+    text("READY...", width/2, height/2);
+    
+  } else if (frameCount <= 140) {
+    left.display();
+    right.display();
+    textSize(200);
+    textAlign(CENTER, CENTER);
+    fill(220, 20, 60);
+    text("GO!!", width/2, height/2);
+    if (frameCount == 140) {
+      onGame = true;
+      startTime = frameCount;
+    }
+    
+  } else {
     if (left.player.score > right.player.score) {
       left.finish("WIN!");  
       right.finish("LOSE!");
