@@ -1,5 +1,4 @@
 Panel left, right; 
-int startTime = 0;
 int playtime = 600;  // 10sec
 boolean onGame;
 
@@ -24,7 +23,7 @@ void draw() {
       }
     }
     
-    if (frameCount == startTime + playtime) {
+    if (playtime == 0) {
       onGame = false;
     }
     
@@ -32,6 +31,7 @@ void draw() {
     right.display();
     
   } else if (frameCount <= 100){
+    // Ready...
     left.display();
     right.display();
     textSize(120);
@@ -40,6 +40,7 @@ void draw() {
     text("READY...", width/2, height/2);
     
   } else if (frameCount <= 140) {
+    // Go!
     left.display();
     right.display();
     textSize(200);
@@ -48,10 +49,10 @@ void draw() {
     text("GO!!", width/2, height/2);
     if (frameCount == 140) {
       onGame = true;
-      startTime = frameCount;
     }
     
   } else {
+    // After finish
     if (left.player.score > right.player.score) {
       left.finish("WIN!");  
       right.finish("LOSE!");
