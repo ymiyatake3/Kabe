@@ -1,5 +1,6 @@
 Panel left, right; 
 int playtime = 600;  // 10sec
+int remainSec = 10;
 boolean onGame;
 
 void setup() {
@@ -12,6 +13,13 @@ void setup() {
 
 void draw() {
   if (onGame) {
+    // Playtime decrease
+    playtime--;
+    if (playtime % 60 == 0) {
+      remainSec--;
+    }
+    
+    // Randomly push each other once in 0.5s
     if (frameCount % 30 == 0) {
       int left_pushed = left.player.push();
       if (left_pushed >= 0) {
@@ -23,12 +31,20 @@ void draw() {
       }
     }
     
+    // End game
     if (playtime == 0) {
       onGame = false;
     }
     
     left.display();
     right.display();
+    fill(255);
+    rectMode(RADIUS);
+    rect(width/2, 40, 50, 60);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    fill(0, 0, 0);
+    text(remainSec, width/2, 40);
     
   } else if (frameCount <= 100){
     // Ready...

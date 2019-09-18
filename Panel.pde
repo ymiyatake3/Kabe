@@ -40,6 +40,7 @@ class Panel {
   void display() {
     // Draw panel
     fill(backcolor);
+    rectMode(CORNER);
     rect(sx, sy, w, h);
     textSize(30);
     textAlign(LEFT);
