@@ -29,7 +29,7 @@ class Wall {
     } else {
       arrayCopy(p1, turnOn);
     }
-    for (int i = 0; i < barnum / 2; i++) {
+    for (int i = 0; i < 4; i++) {
       bars[turnOn[i]].turn();
     }
   } 
